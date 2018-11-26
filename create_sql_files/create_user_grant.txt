@@ -1,15 +1,15 @@
 -- drop user
-drop user 'user_wsm'@'%';
-drop user 'user_wsm'@'localhost';
+-- drop user 'user_wsm'@'%';
+-- drop user 'user_wsm'@'localhost';
 
 -- 해당 데이터 베이스에 select, insert, update, delete, trigger 권한을 계정생성과 부여
-grant select, insert, update, trigger on coffee2.*to 'user_wsm'@'%' identified by 'rootroot';
-grant select, insert, update, trigger on coffee2.*to 'user_wsm'@'localhost' identified by 'rootroot';
+-- grant select, insert, update, trigger on coffee2.*to 'user_wsm'@'%' identified by 'rootroot';
+-- grant select, insert, update, trigger on coffee2.*to 'user_wsm'@'localhost' identified by 'rootroot';
 
 -- 해당 계정에 procedure 실행 권한부여
-GRANT Execute ON coffee2.* TO 'user_wsm'@'%';
-GRANT Execute ON coffee2.* TO 'user_wsm'@'localhost';
+-- GRANT Execute ON coffee2.* TO 'user_wsm'@'%';
+-- GRANT Execute ON coffee2.* TO 'user_wsm'@'localhost';
 
 -- mysql 유저에게 jdbc로 procedure 권한 추가 해주기
-GRANT SELECT, INSERT, UPDATE, DELETE ON 'mysql'.'proc' TO 'user_wsm'@'%';
-GRANT SELECT, INSERT, UPDATE, DELETE ON 'mysql'.'proc' TO 'user_wsm'@'localhost';
+-- GRANT SELECT, INSERT, UPDATE, DELETE ON 'mysql'.'proc' TO 'user_wsm'@'%';
+-- GRANT SELECT, INSERT, UPDATE, DELETE ON 'mysql'.'proc' TO 'user_wsm'@'localhost';
