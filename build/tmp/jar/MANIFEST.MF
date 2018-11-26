@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Title: DataBase_Setting_Application
+Version: 1.0
+Main-Class: database_setting.Main
+

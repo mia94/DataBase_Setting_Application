@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="database_setting.DBConnectionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-11-26T08:47:32" hostname="JAVA_WEB_06" time="0.296">
+  <properties/>
+  <testcase name="test" classname="database_setting.DBConnectionTest" time="0.296"/>
+  <system-out><![CDATA[
+TRACE [Test worker] - Start Connection Test
+
+TRACE [Test worker] - com.mchange.v2.c3p0.impl.NewProxyConnection@7a0531c4 [wrapping: com.mysql.jdbc.JDBC4Connection@63a86224]
+
+TRACE [Test worker] - End Connection Test
+]]></system-out>
+  <system-err><![CDATA[11월 26, 2018 5:47:32 오후 com.mchange.v2.log.MLog 
+정보: MLog clients using java 1.4+ standard logging.
+11월 26, 2018 5:47:32 오후 com.mchange.v2.c3p0.C3P0Registry 
+정보: Initializing c3p0-0.9.5.2 [built 08-December-2015 22:06:04 -0800; debug? true; trace: 10]
+11월 26, 2018 5:47:32 오후 com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource 
+정보: Initializing c3p0 pool... com.mchange.v2.c3p0.PoolBackedDataSource@3ce1520a [ connectionPoolDataSource -> com.mchange.v2.c3p0.WrapperConnectionPoolDataSource@daf1bf7c [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, contextClassLoaderSource -> caller, debugUnreturnedConnectionStackTraces -> false, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, forceSynchronousCheckins -> false, identityToken -> 1hge2za9zlz4nne15l1qzk|7c66f886, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 50, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, nestedDataSource -> com.mchange.v2.c3p0.DriverManagerDataSource@cb99fad6 [ description -> null, driverClass -> null, factoryClassLocation -> null, forceUseNamedDriverClass -> false, identityToken -> 1hge2za9zlz4nne15l1qzk|73311636, jdbcUrl -> jdbc:mysql://localhost/?useSSL=false, properties -> {user=******, url=jdbc:mysql://localhost/?useSSL=false, password=******, driver=com.mysql.jdbc.Driver, dbname=coffee2} ], preferredTestQuery -> null, privilegeSpawnedThreads -> false, propertyCycle -> 0, statementCacheNumDeferredCloseThreads -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false; userOverrides: {} ], dataSourceName -> null, extensions -> {}, factoryClassLocation -> null, identityToken -> 1hge2za9zlz4nne15l1qzk|74fbfca9, numHelperThreads -> 3 ]
+]]></system-err>
+</testsuite>
