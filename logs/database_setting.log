@@ -17,3 +17,262 @@
 [2018-11-26] Start Connection Test
 [2018-11-26] com.mchange.v2.c3p0.impl.NewProxyConnection@7a0531c4 [wrapping: com.mysql.jdbc.JDBC4Connection@63a86224]
 [2018-11-26] End Connection Test
+[2018-11-26] execSqlStatement()
+[2018-11-26] DROP SCHEMA IF EXISTS `coffee2`;
+
+[2018-11-26] 
+CREATE SCHEMA `coffee2`;
+
+[2018-11-26] 
+CREATE TABLE `coffee2`.`product` (
+	`code` CHAR(4)     NOT NULL primary key COMMENT 'code', 
+	`name` VARCHAR(20) NOT NULL COMMENT 'name' 
+)
+COMMENT 'product';
+
+[2018-11-26] 
+ALTER TABLE `coffee2`.`product`
+	ADD CONSTRAINT `PK_product` 
+		PRIMARY KEY (
+			`code` 
+		);
+
+[2018-11-26] 
+CREATE TABLE `coffee2`.`sale` (
+	`no`         INT(11) NOT NULL auto_increment primary key COMMENT 'no', 
+	`price`      INT(11) NOT NULL COMMENT 'price', 
+	`saleCnt`    INT(11) NOT NULL COMMENT 'saleCnt', 
+	`marginRate` INT(11) NOT NULL COMMENT 'marginRate', 
+	`code`       CHAR(4) NULL     COMMENT 'code' 
+)
+COMMENT 'sale';
+
+[2018-11-26] 
+ALTER TABLE `coffee2`.`sale`
+	ADD CONSTRAINT `PK_sale` 
+		PRIMARY KEY (
+			`no` 
+		);
+
+[2018-11-26] 
+CREATE TABLE `coffee2`.`saledetail` (
+	`sale_price`   INT(11) NOT NULL COMMENT 'sale_price', 
+	`addTax`       INT(11) NOT NULL COMMENT 'addTax', 
+	`supply_price` INT(11) NOT NULL COMMENT 'supply_price', 
+	`margin_price` INT(11) NOT NULL COMMENT 'margin_price', 
+	`no`           INT(11) NULL     COMMENT 'no' 
+)
+COMMENT 'saledetail';
+
+[2018-11-26] 
+ALTER TABLE `coffee2`.`sale`
+	ADD CONSTRAINT `FK_product_TO_sale` 
+		FOREIGN KEY (
+			`code` 
+		)
+		REFERENCES `coffee2`.`product` ( 
+			`code` 
+		);
+
+[2018-11-26] 
+ALTER TABLE `coffee2`.`saledetail`
+	ADD CONSTRAINT `FK_sale_TO_saledetail` 
+		FOREIGN KEY (
+			`no` 
+		)
+		REFERENCES `coffee2`.`sale` ( 
+			`no` 
+		);
+
+[2018-11-26] execSqlStatement()
+[2018-11-26] drop user 'user_wsm'@'%';
+
+[2018-11-26] drop user 'user_wsm'@'localhost';
+
+[2018-11-26] 
+grant select, insert, update, trigger on coffee2.*to 'user_wsm'@'%' identified by 'rootroot';
+
+[2018-11-26] grant select, insert, update, trigger on coffee2.*to 'user_wsm'@'localhost' identified by 'rootroot';
+
+[2018-11-26] 
+GRANT Execute ON coffee2.* TO 'user_wsm'@'%';
+
+[2018-11-26] GRANT Execute ON coffee2.* TO 'user_wsm'@'localhost';
+
+[2018-11-26] 
+GRANT SELECT, INSERT, UPDATE, DELETE ON 'mysql'.'proc' TO 'user_wsm'@'%';
+
+[2018-11-26] GRANT SELECT, INSERT, UPDATE, DELETE ON 'mysql'.'proc' TO 'user_wsm'@'localhost';
+
+[2018-11-26] execSqlStatement()
+[2018-11-26] DROP SCHEMA IF EXISTS `coffee2`;
+
+[2018-11-26] 
+CREATE SCHEMA `coffee2`;
+
+[2018-11-26] 
+CREATE TABLE `coffee2`.`product` (
+	`code` CHAR(4)     NOT NULL primary key COMMENT 'code', 
+	`name` VARCHAR(20) NOT NULL COMMENT 'name' 
+)
+COMMENT 'product';
+
+[2018-11-26] 
+ALTER TABLE `coffee2`.`product`
+	ADD CONSTRAINT `PK_product` 
+		PRIMARY KEY (
+			`code` 
+		);
+
+[2018-11-26] 
+CREATE TABLE `coffee2`.`sale` (
+	`no`         INT(11) NOT NULL auto_increment primary key COMMENT 'no', 
+	`price`      INT(11) NOT NULL COMMENT 'price', 
+	`saleCnt`    INT(11) NOT NULL COMMENT 'saleCnt', 
+	`marginRate` INT(11) NOT NULL COMMENT 'marginRate', 
+	`code`       CHAR(4) NULL     COMMENT 'code' 
+)
+COMMENT 'sale';
+
+[2018-11-26] 
+ALTER TABLE `coffee2`.`sale`
+	ADD CONSTRAINT `PK_sale` 
+		PRIMARY KEY (
+			`no` 
+		);
+
+[2018-11-26] 
+CREATE TABLE `coffee2`.`saledetail` (
+	`sale_price`   INT(11) NOT NULL COMMENT 'sale_price', 
+	`addTax`       INT(11) NOT NULL COMMENT 'addTax', 
+	`supply_price` INT(11) NOT NULL COMMENT 'supply_price', 
+	`margin_price` INT(11) NOT NULL COMMENT 'margin_price', 
+	`no`           INT(11) NULL     COMMENT 'no' 
+)
+COMMENT 'saledetail';
+
+[2018-11-26] 
+ALTER TABLE `coffee2`.`sale`
+	ADD CONSTRAINT `FK_product_TO_sale` 
+		FOREIGN KEY (
+			`code` 
+		)
+		REFERENCES `coffee2`.`product` ( 
+			`code` 
+		);
+
+[2018-11-26] 
+ALTER TABLE `coffee2`.`saledetail`
+	ADD CONSTRAINT `FK_sale_TO_saledetail` 
+		FOREIGN KEY (
+			`no` 
+		)
+		REFERENCES `coffee2`.`sale` ( 
+			`no` 
+		);
+
+[2018-11-26] execSqlStatement()
+[2018-11-26] execSqlStatement()
+[2018-11-26] DROP SCHEMA IF EXISTS coffee2;
+
+[2018-11-26] 
+CREATE SCHEMA coffee2;
+
+[2018-11-26] 
+CREATE TABLE coffee2.product (
+	code CHAR(4)     NOT NULL COMMENT 'code', 
+	name VARCHAR(20) NOT NULL COMMENT 'name' 
+)
+COMMENT 'product';
+
+[2018-11-26] 
+ALTER TABLE coffee2.product
+	ADD CONSTRAINT PK_product 
+		PRIMARY KEY (
+			code 
+		);
+
+[2018-11-26] 
+CREATE TABLE coffee2.sale (
+	no         INT(11) NOT NULL COMMENT 'no', 
+	price      INT(11) NOT NULL COMMENT 'price', 
+	saleCnt    INT(11) NOT NULL COMMENT 'saleCnt', 
+	marginRate INT(11) NOT NULL COMMENT 'marginRate', 
+	code       CHAR(4) NULL     COMMENT 'code' 
+)
+COMMENT 'sale';
+
+[2018-11-26] 
+ALTER TABLE coffee2.sale
+	ADD CONSTRAINT PK_sale 
+		PRIMARY KEY (
+			no 
+		);
+
+[2018-11-26] 
+CREATE TABLE coffee2.saledetail (
+	sale_price   INT(11) NOT NULL COMMENT 'sale_price', 
+	addTax       INT(11) NOT NULL COMMENT 'addTax', 
+	supply_price INT(11) NOT NULL COMMENT 'supply_price', 
+	margin_price INT(11) NOT NULL COMMENT 'margin_price', 
+	no           INT(11) NULL     COMMENT 'no' 
+)
+COMMENT 'saledetail';
+
+[2018-11-26] 
+CREATE TABLE coffee2.salefull (
+	no           INT(11) NOT NULL COMMENT 'no', 
+	price        INT(11) NOT NULL COMMENT 'price', 
+	saleCnt      INT(11) NOT NULL COMMENT 'saleCnt', 
+	marginRate   INT(11) NOT NULL COMMENT 'marginRate', 
+	sale_price   INT(11) NOT NULL COMMENT 'sale_price', 
+	addtax       INT(11) NOT NULL COMMENT 'addtax', 
+	supply_price INT(11) NOT NULL COMMENT 'supply_price', 
+	margin_price INT(11) NOT NULL COMMENT 'margin_price', 
+	code         CHAR(4) NULL     COMMENT 'code' 
+)
+COMMENT 'salefull';
+
+[2018-11-26] 
+ALTER TABLE coffee2.salefull
+	ADD CONSTRAINT PK_salefull 
+		PRIMARY KEY (
+			no 
+		);
+
+[2018-11-26] 
+ALTER TABLE coffee2.salefull
+	MODIFY COLUMN no INT(11) NOT NULL AUTO_INCREMENT COMMENT 'no';
+
+[2018-11-26] 
+ALTER TABLE coffee2.sale
+	ADD CONSTRAINT FK_product_TO_sale 
+		FOREIGN KEY (
+			code 
+		)
+		REFERENCES coffee2.product ( 
+			code 
+		);
+
+[2018-11-26] 
+ALTER TABLE coffee2.saledetail
+	ADD CONSTRAINT FK_sale_TO_saledetail 
+		FOREIGN KEY (
+			no 
+		)
+		REFERENCES coffee2.sale ( 
+			no 
+		)
+		ON DELETE CASCADE;
+
+[2018-11-26] 
+ALTER TABLE coffee2.salefull
+	ADD CONSTRAINT FK_product_TO_salefull 
+		FOREIGN KEY (
+			code 
+		)
+		REFERENCES coffee2.product ( 
+			code 
+		);
+
+[2018-11-26] execSqlStatement()

@@ -1,66 +1,101 @@
 -- 내 스키마
-DROP SCHEMA IF EXISTS `coffee2`;
+DROP SCHEMA IF EXISTS coffee2;
 
 -- 내 스키마
-CREATE SCHEMA `coffee2`;
+CREATE SCHEMA coffee2;
 
 -- product
-CREATE TABLE `coffee2`.`product` (
-	`code` CHAR(4)     NOT NULL primary key COMMENT 'code', -- code
-	`name` VARCHAR(20) NOT NULL COMMENT 'name' -- name
+CREATE TABLE coffee2.product (
+	code CHAR(4)     NOT NULL COMMENT 'code', -- code
+	name VARCHAR(20) NOT NULL COMMENT 'name' -- name
 )
 COMMENT 'product';
 
 -- product
-ALTER TABLE `coffee2`.`product`
-	ADD CONSTRAINT `PK_product` -- product 기본키
+ALTER TABLE coffee2.product
+	ADD CONSTRAINT PK_product -- product 기본키
 		PRIMARY KEY (
-			`code` -- code
+			code -- code
 		);
 
 -- sale
-CREATE TABLE `coffee2`.`sale` (
-	`no`         INT(11) NOT NULL auto_increment primary key COMMENT 'no', -- no
-	`price`      INT(11) NOT NULL COMMENT 'price', -- price
-	`saleCnt`    INT(11) NOT NULL COMMENT 'saleCnt', -- saleCnt
-	`marginRate` INT(11) NOT NULL COMMENT 'marginRate', -- marginRate
-	`code`       CHAR(4) NULL     COMMENT 'code' -- code
+CREATE TABLE coffee2.sale (
+	no         INT(11) NOT NULL COMMENT 'no', -- no
+	price      INT(11) NOT NULL COMMENT 'price', -- price
+	saleCnt    INT(11) NOT NULL COMMENT 'saleCnt', -- saleCnt
+	marginRate INT(11) NOT NULL COMMENT 'marginRate', -- marginRate
+	code       CHAR(4) NULL     COMMENT 'code' -- code
 )
 COMMENT 'sale';
 
 -- sale
-ALTER TABLE `coffee2`.`sale`
-	ADD CONSTRAINT `PK_sale` -- sale 기본키
+ALTER TABLE coffee2.sale
+	ADD CONSTRAINT PK_sale -- sale 기본키
 		PRIMARY KEY (
-			`no` -- no
+			no -- no
 		);
 
 -- saledetail
-CREATE TABLE `coffee2`.`saledetail` (
-	`sale_price`   INT(11) NOT NULL COMMENT 'sale_price', -- sale_price
-	`addTax`       INT(11) NOT NULL COMMENT 'addTax', -- addTax
-	`supply_price` INT(11) NOT NULL COMMENT 'supply_price', -- supply_price
-	`margin_price` INT(11) NOT NULL COMMENT 'margin_price', -- margin_price
-	`no`           INT(11) NULL     COMMENT 'no' -- no
+CREATE TABLE coffee2.saledetail (
+	sale_price   INT(11) NOT NULL COMMENT 'sale_price', -- sale_price
+	addTax       INT(11) NOT NULL COMMENT 'addTax', -- addTax
+	supply_price INT(11) NOT NULL COMMENT 'supply_price', -- supply_price
+	margin_price INT(11) NOT NULL COMMENT 'margin_price', -- margin_price
+	no           INT(11) NULL     COMMENT 'no' -- no
 )
 COMMENT 'saledetail';
 
+-- salefull
+CREATE TABLE coffee2.salefull (
+	no           INT(11) NOT NULL COMMENT 'no', -- no
+	price        INT(11) NOT NULL COMMENT 'price', -- price
+	saleCnt      INT(11) NOT NULL COMMENT 'saleCnt', -- saleCnt
+	marginRate   INT(11) NOT NULL COMMENT 'marginRate', -- marginRate
+	sale_price   INT(11) NOT NULL COMMENT 'sale_price', -- sale_price
+	addtax       INT(11) NOT NULL COMMENT 'addtax', -- addtax
+	supply_price INT(11) NOT NULL COMMENT 'supply_price', -- supply_price
+	margin_price INT(11) NOT NULL COMMENT 'margin_price', -- margin_price
+	code         CHAR(4) NULL     COMMENT 'code' -- code
+)
+COMMENT 'salefull';
+
+-- salefull
+ALTER TABLE coffee2.salefull
+	ADD CONSTRAINT PK_salefull -- salefull 기본키
+		PRIMARY KEY (
+			no -- no
+		);
+
+ALTER TABLE coffee2.salefull
+	MODIFY COLUMN no INT(11) NOT NULL AUTO_INCREMENT COMMENT 'no';
+
 -- sale
-ALTER TABLE `coffee2`.`sale`
-	ADD CONSTRAINT `FK_product_TO_sale` -- product -> sale
+ALTER TABLE coffee2.sale
+	ADD CONSTRAINT FK_product_TO_sale -- product -> sale
 		FOREIGN KEY (
-			`code` -- code
+			code -- code
 		)
-		REFERENCES `coffee2`.`product` ( -- product
-			`code` -- code
+		REFERENCES coffee2.product ( -- product
+			code -- code
 		);
 
 -- saledetail
-ALTER TABLE `coffee2`.`saledetail`
-	ADD CONSTRAINT `FK_sale_TO_saledetail` -- sale -> saledetail
+ALTER TABLE coffee2.saledetail
+	ADD CONSTRAINT FK_sale_TO_saledetail -- sale -> saledetail
 		FOREIGN KEY (
-			`no` -- no
+			no -- no
 		)
-		REFERENCES `coffee2`.`sale` ( -- sale
-			`no` -- no
+		REFERENCES coffee2.sale ( -- sale
+			no -- no
+		)
+		ON DELETE CASCADE;
+
+-- salefull
+ALTER TABLE coffee2.salefull
+	ADD CONSTRAINT FK_product_TO_salefull -- product -> salefull
+		FOREIGN KEY (
+			code -- code
+		)
+		REFERENCES coffee2.product ( -- product
+			code -- code
 		);
